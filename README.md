@@ -22,6 +22,7 @@ You can use it to easily write, search, and view notes. Notes are stored as huma
 - [ ] Note titles
 - [ ] Edit previous notes
 - [ ] https://jrnl.sh/en/stable/usage/
+- [ ] https://github.com/charmbracelet/bubbletea/tree/master/examples/split-editors
 
 ## Installation
 
