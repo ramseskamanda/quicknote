@@ -2,7 +2,7 @@
 
 ---
 
-`quicknote` is a simple CLI notes app, like jrnl but in Go!
+`quicknote` is a simple CLI notes app, like [jrnl](https://jrnl.sh/en/stable/usage/) but in Go!
 
 Sometimes you just need to write down some notes when you're deep into
 a sensitive directory and don't want to open a new terminal or use vim.
@@ -14,15 +14,16 @@ You can use it to easily write, search, and view notes. Notes are stored as huma
 
 ## Features
 
-- [ ] CLI args become timestamped notes
-- [ ] No args starts an editor that becomes a timestamped note when closed
-- [ ] save notes to single file
-- [ ] list notes from cli
-- [ ] search notes by time
+- [x] CLI args become timestamped notes
+- [x] No args starts an editor that becomes a timestamped note when closed
+- [x] save notes to single file
+- [x] list notes from cli
+- [x] search notes by content
+- [x] Fix editor styling
 - [ ] Note titles
 - [ ] Edit previous notes
-- [ ] https://jrnl.sh/en/stable/usage/
-- [ ] https://github.com/charmbracelet/bubbletea/tree/master/examples/split-editors
+- [ ] Save editor without closing
+- [ ] Delete previous notes
 
 ## Installation
 
