@@ -20,10 +20,10 @@ You can use it to easily write, search, and view notes. Notes are stored as huma
 - [x] list notes from cli
 - [x] search notes by content
 - [x] Fix editor styling
-- [ ] Note titles
-- [ ] Edit previous notes
-- [ ] Save editor without closing
-- [ ] Delete previous notes
+- [x] Edit previous notes
+- [x] Save editor without closing
+- [x] Delete previous notes
+- [ ] Note titles (v0.2)
 
 ## Installation
 

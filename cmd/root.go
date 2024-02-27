@@ -4,13 +4,16 @@ import (
 	"context"
 	"fmt"
 	"github.com/charmbracelet/bubbles/list"
+	"github.com/ramseskamanda/quicknote/internal/core"
 	"github.com/ramseskamanda/quicknote/internal/storage"
 	"github.com/ramseskamanda/quicknote/internal/tui"
 	"github.com/spf13/cobra"
+	"os"
 	"strings"
+	"time"
 )
 
-var filename = "/home/ramsesk/.local/share/quicknote/"
+var filename = os.Getenv("HOME") + "/.local/share/quicknote/"
 
 var (
 	listFlag bool
@@ -32,6 +35,8 @@ var rootCmd = &cobra.Command{
 		}
 
 		switch {
+		case len(args) > 0:
+			return db.WriteNote(time.Now(), strings.Join(args, " "))
 		case listFlag:
 			savedNotes, err := db.ListNotes()
 			if err != nil {
@@ -43,11 +48,39 @@ var rootCmd = &cobra.Command{
 				item = append(item, note)
 			}
 
-			return tui.List(item)
-		case len(args) > 0:
-			return db.WriteNote(strings.Join(args, " "))
+			onDelete := func(item list.Item) error {
+				note := item.(*core.Note)
+
+				return db.DeleteNote(note.Timestamp)
+			}
+
+			list, err := tui.List(item, onDelete)
+			if err != nil {
+				return err
+			}
+
+			if list.Selected == nil {
+				return nil
+			}
+
+			note, ok := list.Selected.(*core.Note)
+			if !ok {
+				return nil
+			}
+
+			onSave := func(text string) error {
+				return db.WriteNote(note.Timestamp, text)
+			}
+
+			return tui.NewEditor(note.Timestamp.String(), note.Text, onSave)
 		default:
-			return tui.Editor(db.WriteNote)
+			timestamp := time.Now()
+
+			onSave := func(text string) error {
+				return db.WriteNote(timestamp, text)
+			}
+
+			return tui.NewEditor("New note", "", onSave)
 		}
 	},
 	PostRun: func(cmd *cobra.Command, args []string) {

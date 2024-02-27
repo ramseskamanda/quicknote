@@ -30,7 +30,7 @@ func Open(where string) (*Dir, error) {
 }
 
 func initialize(where string) error {
-	if err := os.MkdirAll(where, 0750); err != nil {
+	if err := os.MkdirAll(path.Clean(where), 0750); err != nil {
 		return fmt.Errorf("failed to create parent directories: %w", err)
 	}
 
@@ -44,12 +44,12 @@ func initialize(where string) error {
 	return nil
 }
 
-func (dir *Dir) WriteNote(text string) error {
+func (dir *Dir) WriteNote(timestamp time.Time, text string) error {
 	if text == "" {
 		return nil
 	}
 
-	filename := path.Join(dir.path, time.Now().Format(FilenameFmt)+".txt")
+	filename := path.Join(dir.path, timestamp.Format(FilenameFmt)+".txt")
 
 	f, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE, 0600)
 	if err != nil {
@@ -63,6 +63,12 @@ func (dir *Dir) WriteNote(text string) error {
 	}
 
 	return nil
+}
+
+func (dir *Dir) DeleteNote(timestamp time.Time) error {
+	filename := path.Join(dir.path, timestamp.Format(FilenameFmt)+".txt")
+
+	return os.Remove(filename)
 }
 
 func (dir *Dir) ListNotes() ([]*core.Note, error) {

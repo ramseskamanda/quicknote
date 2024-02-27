@@ -19,26 +19,26 @@ var (
 	cursorStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("212"))
 
 	cursorLineStyle = lipgloss.NewStyle().
-		Background(lipgloss.Color("57")).
-		Foreground(lipgloss.Color("230"))
+			Background(lipgloss.Color("57")).
+			Foreground(lipgloss.Color("230"))
 
 	placeholderStyle = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("238"))
+				Foreground(lipgloss.Color("238"))
 
 	endOfBufferStyle = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("235"))
+				Foreground(lipgloss.Color("235"))
 
 	focusedPlaceholderStyle = lipgloss.NewStyle().
-		Foreground(lipgloss.Color("99"))
+				Foreground(lipgloss.Color("99"))
 
 	focusedBorderStyle = lipgloss.NewStyle().
-		Border(lipgloss.RoundedBorder()).
-		BorderForeground(lipgloss.Color("238"))
+				Border(lipgloss.RoundedBorder()).
+				BorderForeground(lipgloss.Color("238"))
 
 	blurredBorderStyle = lipgloss.NewStyle().
-		Border(lipgloss.HiddenBorder())
+				Border(lipgloss.HiddenBorder())
 
-	keyBindings = keymap{
+	keyBindings = editorKeyMap{
 		next: key.NewBinding(
 			key.WithKeys("tab"),
 			key.WithHelp("tab", "next"),
@@ -68,7 +68,7 @@ var (
 
 type OnSaveCallback func(string) error
 
-type keymap struct {
+type editorKeyMap struct {
 	next, prev, add, save, remove, quit key.Binding
 }
 
@@ -95,7 +95,7 @@ func newTextarea() textarea.Model {
 type EditorModel struct {
 	width  int
 	height int
-	keymap keymap
+	keymap editorKeyMap
 	help   help.Model
 	inputs []textarea.Model
 	focus  int
@@ -210,14 +210,18 @@ func (m EditorModel) View() string {
 	return lipgloss.JoinHorizontal(lipgloss.Top, views...) + "\n\n" + helpView
 }
 
-func Editor(onSave OnSaveCallback) error {
-	m := EditorModel{inputs: []textarea.Model{newTextarea()}, help: help.New(), keymap: keyBindings}
+func NewEditor(title string, initialText string, onSave OnSaveCallback) error {
+	text := newTextarea()
+	text.SetValue(initialText)
+
+	m := EditorModel{inputs: []textarea.Model{text}, help: help.New(), keymap: keyBindings}
 	m.onSave = onSave
 
 	m.inputs[m.focus].Focus()
 	m.updateKeybindings()
 
 	p := tea.NewProgram(m, tea.WithAltScreen())
+	p.SetWindowTitle(title)
 
 	_, err := p.Run()
 	return err
