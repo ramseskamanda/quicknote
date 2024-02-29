@@ -11,3 +11,4 @@ Thumbs.db
 /cli/winresources/versioninfo.json
 /cli/winresources/*.syso
 profile.out
+dist/

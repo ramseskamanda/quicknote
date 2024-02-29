@@ -17,8 +17,8 @@ var filename = os.Getenv("HOME") + "/.local/share/quicknote/"
 
 var (
 	listFlag bool
-	version  string
-	commit   string
+	Version  string
+	Commit   string
 )
 
 func Execute() error {
@@ -30,7 +30,7 @@ func Execute() error {
 // CLI args become timestamped notes
 var rootCmd = &cobra.Command{
 	Use:     "quicknote",
-	Version: fmt.Sprintf("%s (%s)", version, commit),
+	Version: fmt.Sprintf("%s (%s)", Version, Commit),
 	RunE: func(cmd *cobra.Command, args []string) error {
 		db, err := storage.Open(filename)
 		if err != nil {
