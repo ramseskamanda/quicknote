@@ -1,3 +1,8 @@
+before:
+  hooks:
+    - go mod tidy
+    - go generate ./...
+
 builds:
   - main: '.'
     binary: quicknote
@@ -32,3 +37,10 @@ brews:
 
 checksum:
   name_template: 'checksums.txt'
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'

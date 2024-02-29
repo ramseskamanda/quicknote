@@ -29,8 +29,16 @@ func Execute() error {
 
 // CLI args become timestamped notes
 var rootCmd = &cobra.Command{
-	Use:     "quicknote",
+	Use:     "quicknote [note (optional)]",
 	Version: fmt.Sprintf("%s (%s)", Version, Commit),
+	Short:   "Quick notes from your command line",
+	Long: `
+quicknote is a simple CLI notes app, like jrnl but in Go!
+
+Sometimes you just need to write down some notes when you're deep into a sensitive directory and don't want to open a new terminal or use vim. This is is exactly what this is useful for! :)
+No markdown, no syntax highlighting, just simple notes notes without leaving the command line.
+You can use it to easily write, search, and view notes. Notes are stored as human-readable plain text.
+`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		db, err := storage.Open(filename)
 		if err != nil {
