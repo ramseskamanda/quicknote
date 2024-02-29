@@ -21,7 +21,7 @@ universal_binaries:
 brews:
   - name: quicknote
     homepage: https://github.com/ramseskamanda/quicknote
-    tap:
+    repository:
       owner: ramseskamanda
       name: homebrew-tap
     commit_author:
