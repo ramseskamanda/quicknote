@@ -24,22 +24,27 @@ You can use it to easily write, search, and view notes. Notes are stored as huma
 - [x] Save editor without closing
 - [x] Delete previous notes
 - [ ] Note titles (v0.2)
+- [ ] Full texting (v0.2)
 
 ## Installation
 
 ### From source
 
-!TODO
+Make sure you have go>=1.22 installed, then run:
 
-### From AUR or other package managers
+```shell
+go install github.com/ramseskamanda/quicknote
+```
 
-!TODO
+### From package managers
+
+!TODO - https://greeeg.com/en/issues/how-to-create-release-distribute-cli-golang
 
 ## Basic Usage
 
 Simply use `quicknote` (personally aliased to `qn`) and an editor will open for you.
 
-You can also run `quicknote my root partition is 320MB because of the /opt/ directory!!` and this note will be saved!
+You can also run `quicknote my first direct note!` and this note will be saved!
 
 All helpers should be displayed by the application but in case they are not, simply run `quicknote --help`.
 

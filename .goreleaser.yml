@@ -1,0 +1,32 @@
+builds:
+  - main: '.'
+    binary: quicknote
+    flags:
+      - -v
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    env:
+      - CGO_ENABLED=0
+
+release:
+  prerelease: auto
+
+universal_binaries:
+  - replace: true
+
+brews:
+  - name: quicknote
+    homepage: https://github.com/ramseskamanda/quicknote
+    tap:
+      owner: ramseskamanda
+      name: homebrew-tap
+    commit_author:
+      name: ramseskamanda
+      email: ramses.kamanda@gmail.com
+
+checksum:
+  name_template: 'checksums.txt'

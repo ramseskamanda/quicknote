@@ -28,6 +28,7 @@ func Execute() error {
 // CLI args become timestamped notes
 var rootCmd = &cobra.Command{
 	Use: "quicknote",
+	// TODO: add documentation + version
 	RunE: func(cmd *cobra.Command, args []string) error {
 		db, err := storage.Open(filename)
 		if err != nil {
