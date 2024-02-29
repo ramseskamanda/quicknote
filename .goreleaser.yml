@@ -12,7 +12,7 @@ builds:
     env:
       - CGO_ENABLED=0
     ldflags:
-      - -s -w -X github.com/ramseskamanda/quicknote/cmd.Version=0.1.3 -X github.com/ramseskamanda/quicknote/cmd.Commit=1234
+      - -s -w -X github.com/ramseskamanda/quicknote/cmd.Version={{.Version}} -X github.com/ramseskamanda/quicknote/cmd.Commit={{.Commit}}
 
 release:
   prerelease: auto
