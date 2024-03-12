@@ -3,6 +3,7 @@
 [![Latest Release](https://img.shields.io/github/release/ramseskamanda/quicknote.svg)](https://github.com/ramseskamanda/quicknote/releases)
 [![Go Report Card](https://goreportcard.com/badge/github.com/ramseskamanda/quicknote)](https://goreportcard.com/report/github.com/ramseskamanda/quicknote)
 [![License](https://img.shields.io/github/license/ramseskamanda/quicknote)](https://github.com/ramseskamanda/quicknote/blob/master/LICENSE)
+[![codecov](https://codecov.io/gh/ramseskamanda/quicknote/graph/badge.svg?token=MNDQOUZMEJ)](https://codecov.io/gh/ramseskamanda/quicknote)
 
 ## About
 
