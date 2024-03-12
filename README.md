@@ -9,6 +9,10 @@
 
 `quicknote` is a simple CLI notes app, like [jrnl](https://jrnl.sh/en/stable/usage/) but simpler and in Go!
 
+| ![Menu screenshot](/docs/screenshots/menu.png) | ![Editor screenshot](/docs/screenshots/editor.png) |
+|:----------------------------------------------:|:--------------------------------------------------:|
+|                List your notes                 |                     Edit notes                     |
+
 Sometimes you just need to write down some notes when you're deep into
 a sensitive directory and don't want to open a new terminal or use vim.
 This is is exactly what this is useful for! :)
