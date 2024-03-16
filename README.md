@@ -75,6 +75,18 @@ All the notes are saved as `.txt` files in the `$HOME/.local/share/quicknote/` d
 
 All helpers should be displayed by the application but in case they are not, simply run `quicknote --help`.
 
+## Roadmap
+
+Since this is an open-source project, the release cycles will depend on contributors (and myself).
+The aim is for this utility always to remain single purpose and easy to use as per the UNIX philosophy.
+
+- [ ] Support custom note directories (incl. remote)
+- [ ] Support for $EDITOR
+- [ ] Support for tags, titles, and more
+- [ ] Support for WYSIWYG editors
+
+If you have any feature requests, please feel free to open a Github Issue and it will be discussed and added to the roadmap.
+
 ## License
 
 [MIT](/LICENSE)
